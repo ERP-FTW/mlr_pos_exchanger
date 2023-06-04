@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_journal_form_okcoin_server" model="ir.ui.view">
+            <field name="name">account.journal.form.inherit.okcoin.server</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="use_okcoin_server" attrs="{'invisible': [('type', '!=', 'bank')] }"/>
+                    <field name="okcoin_server_instance_id" attrs="{'invisible': [('use_okcoin_server', '=', False)] }"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

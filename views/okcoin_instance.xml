@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_okcoin_instance" model="ir.actions.act_window">
+	        <field name="name">OKcoin Instance</field>
+	        <field name="res_model">okcoin.instance</field>
+	        <field name="view_mode">tree,form</field>
+	    </record>
+
+	    <menuitem id="menu_action_okcoin_instance"
+	      	parent="point_of_sale.menu_point_config_product"
+			action="action_okcoin_instance"
+			sequence="12"/>
+        <!-- Tree view -->
+        <record id="view_okcoin_instance_tree" model="ir.ui.view">
+            <field name="name">view.n911.instance.tree</field>
+            <field name="model">okcoin.instance</field>
+            <field name="arch" type="xml">
+                <tree string="model_tree" >
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_okcoin_instance_form" model="ir.ui.view">
+	      <field name="name">OKcoin Instance</field>
+	      <field name="model">okcoin.instance</field>
+	      <field name="arch" type="xml">
+	        <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,inactive" context="{'state': state}"/>
+                    <button name="action_test_connection" type="object" string="Test Connection" icon="fa-television"/>
+                    <button string="Activate" name="action_activate" type="object" class="btn-primary"
+                        attrs="{'invisible': [('state', 'in', ('active',))]}"/>
+                    <button string="Deactivate" name="action_deactivate" type="object" class="btn-primary"
+                         attrs="{'invisible': [('state', 'in', ('draft','inactive',))]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" attrs="{'readonly': [('state', '=', 'active')]}"/>
+                        <field name="server_url" attrs="{'readonly': [('state', '=', 'active')]}"/>
+                        <field name="api_key" attrs="{'readonly': [('state', '=', 'active')]}" password="True"/>
+                        <field name="secret_key" attrs="{'readonly': [('state', '=', 'active')]}"/>
+                         <field name="pass_phrase" attrs="{'readonly': [('state', '=', 'active')]}"/>
+                        <field name="convert_percent"/>
+                    </group>
+                </sheet>
+    		</form>
+	      </field>
+	    </record>
+    </data>
+</odoo>

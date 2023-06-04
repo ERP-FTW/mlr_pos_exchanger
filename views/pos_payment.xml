@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_pos_payment_form_okcoin" model="ir.ui.view">
+            <field name="name">pos.payment.form.view.inherit</field>
+            <field name="model">pos.payment</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_payment_form"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='session_id']" position="after">
+                    <field name="okcoin_invoice_id" style="width: 200px"/>
+                    <field name="conversion_rate"/>
+                    <field name="invoiced_sat_amount"/>
+                    <field name="okcoin_payment_link" style="width: 200px"/>
+                    <field name="okcoin_payment_link_qr_code" widget="image" options="{'size': [300, 300]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
