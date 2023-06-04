@@ -18,7 +18,7 @@ class PosPayment(models.Model):
    conversion_rate = fields.Float('Conversion rate')
    invoiced_sat_amount = fields.Float('Invoiced Satoshi Amount', digits=(12,4))
    okcoin_payment_link = fields.Char('OKcoin Payment Link')
-   okcoin_payment_link_qr_code = fields.Binary('QR Code', compute="_generate_qr") #binary field that is computed into a QR
+   okcoin_payment_link_qr_code = fields.Binary('Okcoin QR Code', compute="_generate_qr") #binary field that is computed into a QR
 
    def _generate_qr(self): #called by compute field to change binary into QR
        for rec in self:
